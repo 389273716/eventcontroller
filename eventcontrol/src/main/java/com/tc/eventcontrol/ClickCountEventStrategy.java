@@ -3,7 +3,7 @@ package com.tc.eventcontrol;
 
 /**
  * author：   tc
- * date：     2017/3/21 & 下午2:58
+ * date：     2017/3/21 下午2:58
  * version    1.0
  * description 通过点击次数控制方法的执行.当前点击次数超过设定的最大值时，满足触发条件。
  * modify by

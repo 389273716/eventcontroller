@@ -3,18 +3,17 @@ package com.tc.eventcontrol;
 
 /**
  * author：   tc
- * date：     2017/3/22 & 上午9:26
+ * date：     2017/3/22 上午9:26
  * version    1.0
- * description 策略：特定时间内双击才触发事件。delaytime内curDelayClickCount>=delayClickCount
+ * description 策略：特定时间内多次点击才触发事件。
  * modify by
  */
 public class DoubleClickStrategy implements IEventStrategy {
-    private static final String TAG = DoubleClickStrategy.class.getSimpleName();
 
     @Override
     public boolean canTriggeredEvent(EventEntity entity) {
         int count = entity.getCurrentDelayClickCount() + 1;
-        boolean isDouble = count >= entity.getDelayClickCount();
+        boolean isDouble = count >= entity.getDelayClickCount();//delaytime内curDelayClickCount大于等于delayClickCount
         boolean isInTime = System.currentTimeMillis() - entity.getRecordLastTime() <= entity
                 .getDelayTime();
         boolean b = isDouble && isInTime;

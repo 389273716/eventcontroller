@@ -2,7 +2,7 @@ package com.tc.eventcontrol;
 
 /**
  * author：   tc
- * date：     2017/3/21 & 下午2:49
+ * date：     2017/3/21  下午2:49
  * version    1.0
  * description 事件触发条件实体
  * modify by

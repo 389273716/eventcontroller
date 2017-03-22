@@ -2,7 +2,7 @@ package com.tc.eventcontrol;
 
 /**
  * author：   tc
- * date：     2017/3/21 & 下午4:20
+ * date：     2017/3/21 下午4:20
  * version    1.0
  * description 是否事件event在执行中，如果在执行中则返回false，不触发。
  * modify by

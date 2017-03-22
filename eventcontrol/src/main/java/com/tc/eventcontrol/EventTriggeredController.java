@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  * author：   tc
- * date：     2017/3/21 & 下午2:32
+ * date：     2017/3/21  下午2:32
  * version    1.0
  * description 方法事件控制器
  * 控制事件被触发。比如间隔一段时间、操作中无法触发、多次点击才触发,特定时间内多次点击触发等
@@ -33,11 +33,10 @@ public class EventTriggeredController {
 
     /**
      * 执行多次点击间隔判断
-     * 执行策略判断，如果满足可触发条件，则返回true。
      *
      * @param tag             事件触发判断的唯一标识tag
      * @param delayClickCount 默认间隔次数
-     * @return
+     * @return 执行策略判断，如果满足可触发条件，则返回true。
      */
     public boolean doClickCountStrategy(String tag, int delayClickCount) {
         if (!mEventStrategyTags.containsKey(tag)) {
@@ -51,11 +50,10 @@ public class EventTriggeredController {
 
     /**
      * 执行延迟时间策略
-     * 执行策略判断，如果满足可触发条件，则返回true。
      *
      * @param tag       事件触发判断的唯一标识tag
      * @param delayTime 默认间隔时间
-     * @return
+     * @return 执行策略判断，如果满足可触发条件，则返回true。
      */
     public boolean doDelayTimeStrategy(String tag, long delayTime) {
         if (!mEventStrategyTags.containsKey(tag)) {
@@ -69,10 +67,9 @@ public class EventTriggeredController {
 
     /**
      * 执行操作中策略判断，如果操作中则返回false。重置状态调用resetOperatingStrategy方法
-     * 执行策略判断，如果满足可触发条件，则返回true。
      *
      * @param tag 事件触发判断的唯一标识tag
-     * @return
+     * @return 执行策略判断，如果满足可触发条件，则返回true。
      */
     public boolean doOperatingStrategy(String tag) {
         if (!mEventStrategyTags.containsKey(tag)) {
@@ -84,12 +81,11 @@ public class EventTriggeredController {
 
     /**
      * 执行特定时间内多次点击触发的策略，比如2秒内双击触发
-     * 执行策略判断，如果满足可触发条件，则返回true。
      *
      * @param tag             事件触发判断的唯一标识tag
      * @param delayTime       默认间隔时间
      * @param delayClickCount 默认间隔次数
-     * @return
+     * @return 执行策略判断，如果满足可触发条件，则返回true。
      */
     public boolean doDoubleClickStrategy(String tag, long delayTime, int delayClickCount) {
         if (!mEventStrategyTags.containsKey(tag)) {
@@ -104,8 +100,8 @@ public class EventTriggeredController {
     /**
      * 增加一个策略控制事件触发
      *
-     * @param eventEntity
-     * @param iEventStrategy
+     * @param eventEntity    事件实体信息
+     * @param iEventStrategy 策略类
      */
     public void addEventStrategy(EventEntity eventEntity, IEventStrategy iEventStrategy) {
         if (eventEntity == null || iEventStrategy == null
@@ -124,7 +120,7 @@ public class EventTriggeredController {
      * 执行策略判断，如果满足可触发条件，则返回true。
      *
      * @param tag 事件触发判断的唯一标识tag
-     * @return
+     * @return 执行策略判断，如果满足可触发条件，则返回true。
      */
     public boolean doStrategy(String tag) {
         IEventStrategy iEventStrategy = mEventStrategyTags.get(tag);
@@ -141,7 +137,7 @@ public class EventTriggeredController {
     /**
      * 重置当前tag对应的逻辑参数isOperating的状态为false，即操作结束
      *
-     * @param tag
+     * @param tag 当前要操作的策略对应的tag
      */
     public void resetOperatingStatus(String tag) {
         EventEntity eventEntity = mEventEntities.get(tag);
@@ -151,7 +147,9 @@ public class EventTriggeredController {
     }
 
     /**
-     * @param tag
+     * 移除某个策略
+     *
+     * @param tag 当前要操作的策略对应的tag
      */
     public void removeStrategy(String tag) {
         if (mEventEntities == null || mEventEntities.size() <= 0) {
@@ -164,6 +162,9 @@ public class EventTriggeredController {
         mEventStrategyTags.remove(tag);
     }
 
+    /**
+     * 移除所有策略
+     */
     public void destroy() {
         mEventEntities.clear();
         mEventStrategyTags.clear();

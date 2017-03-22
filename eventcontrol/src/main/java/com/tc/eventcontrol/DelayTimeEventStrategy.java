@@ -3,7 +3,7 @@ package com.tc.eventcontrol;
 
 /**
  * author：   tc
- * date：     2017/3/21 & 下午4:15
+ * date：     2017/3/21  下午4:15
  * version    1.0
  * description 延迟时间触发事件event
  * modify by
