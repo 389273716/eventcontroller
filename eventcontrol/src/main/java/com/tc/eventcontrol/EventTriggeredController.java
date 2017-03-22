@@ -1,8 +1,5 @@
-package com.tc.eventcontroller;
+package com.tc.eventcontrol;
 
-
-import android.text.TextUtils;
-import android.util.Log;
 
 import java.util.HashMap;
 
@@ -111,10 +108,9 @@ public class EventTriggeredController {
      * @param iEventStrategy
      */
     public void addEventStrategy(EventEntity eventEntity, IEventStrategy iEventStrategy) {
-        if (eventEntity == null || iEventStrategy == null || TextUtils.isEmpty(eventEntity
-                .getEventTag
-                        ())) {
-            Log.e(TAG, "addEventStrategy: 非法参数传入！");
+        if (eventEntity == null || iEventStrategy == null
+                || eventEntity.getEventTag() == null
+                || "".equals(eventEntity.getEventTag())) {
             return;
         }
 //        if (mEventStrategyTags.containsKey(eventEntity.getEventTag())) {
@@ -134,11 +130,9 @@ public class EventTriggeredController {
         IEventStrategy iEventStrategy = mEventStrategyTags.get(tag);
         EventEntity eventEntity = mEventEntities.get(tag);
         if (iEventStrategy == null) {
-            Log.e(TAG, "doStrategy: 不存在该策略！");
             return false;
         }
         if (eventEntity == null) {
-            Log.e(TAG, "doStrategy: 不存在策略对应的事件信息实体！");
             return false;
         }
         return iEventStrategy.canTriggeredEvent(eventEntity);
@@ -161,20 +155,16 @@ public class EventTriggeredController {
      */
     public void removeStrategy(String tag) {
         if (mEventEntities == null || mEventEntities.size() <= 0) {
-            Log.e(TAG, "removeStrategy: 移除一个策略失败，事件集合为空！");
             return;
         }
         if (mEventStrategyTags == null || mEventStrategyTags.size() <= 0) {
-            Log.e(TAG, "removeStrategy: 移除一个策略失败，策略集合为空！");
             return;
         }
-        Log.e(TAG, "removeStrategy: 移除一个策略！");
         mEventEntities.remove(tag);
         mEventStrategyTags.remove(tag);
     }
 
     public void destroy() {
-        Log.e(TAG, "destroy: 清除所有策略！");
         mEventEntities.clear();
         mEventStrategyTags.clear();
     }

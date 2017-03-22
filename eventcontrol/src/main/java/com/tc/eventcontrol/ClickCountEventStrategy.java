@@ -1,4 +1,4 @@
-package com.tc.eventcontroller;
+package com.tc.eventcontrol;
 
 
 /**

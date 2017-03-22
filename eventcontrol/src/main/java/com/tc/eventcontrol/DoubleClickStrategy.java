@@ -1,7 +1,5 @@
-package com.tc.eventcontroller;
+package com.tc.eventcontrol;
 
-
-import android.util.Log;
 
 /**
  * author：   tc
@@ -20,10 +18,6 @@ public class DoubleClickStrategy implements IEventStrategy {
         boolean isInTime = System.currentTimeMillis() - entity.getRecordLastTime() <= entity
                 .getDelayTime();
         boolean b = isDouble && isInTime;
-        Log.i(TAG, "canTriggeredEvent: cur time: " + System.currentTimeMillis() + " " +
-                "RecordLastTime:" +
-                entity.getRecordLastTime());
-        Log.i(TAG, "canTriggeredEvent: count: " + count + " isInTime:" + isInTime);
         if (!isInTime) {
             //超出时间：更新记录的时间，重置点击次数，从本次开始计数
             entity.setCurrentDelayClickCount(1);
