@@ -8,3 +8,5 @@
  * 使用方式：设置EventEntity的对应值，使用默认的Strategy策略，或者自行实现IEventStrategy接口实现自定义策略。
  调用addEventStrategy()方法添加策略，调用doStrategy()执行策略判断，remove()方法移除，或者destroy清除所有策略。
  *使用方式参照app下的demo。
+
+compile 'com.tc.seekbar:library:0.1.0'
